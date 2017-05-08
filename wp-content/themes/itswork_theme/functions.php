@@ -30,4 +30,4 @@ add_action( 'wp_default_scripts', function( $scripts ) {
 
 add_theme_support( 'post-thumbnails' ); 
 add_image_size('small_thumbnail',450,243,true);
-add_image_size('banner_image',920,210,array( 'left', 'top' ));
+add_image_size('banner_image',1920,1210,true);

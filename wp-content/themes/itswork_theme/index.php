@@ -11,18 +11,25 @@ get_header();?>
         </div>
     </header>
 
-    <section class="bg-primary" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">We've got what you need!</h2>
-                    <hr class="light">
-                    <p class="text-faded">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-                    <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Get Started!</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    
+        <?php
+        // The Query
+        $args=array('page_id'=>47);
+        $the_query = new WP_Query( array( 'page_id' => 47 ) );
+        //var_dump($the_query);
+        // The Loop
+        if ( $the_query->have_posts() ) {
+        while ( $the_query->have_posts() ) { $the_query->the_post();
+            the_content();
+         }
+        wp_reset_postdata();}
+
+
+          ?>
+
+
+          ?>
+           
 
     <section id="services">
         <div class="container">
@@ -137,13 +144,27 @@ get_header();?>
                     <hr class="primary">
                     <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
                 </div>
-                <div class="col-lg-4 col-lg-offset-2 text-center">
+                </div>
+                <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
                     <i class="fa fa-phone fa-3x sr-contact"></i>
                     <p>123-456-6789</p>
                 </div>
-                <div class="col-lg-4 text-center">
-                    <i class="fa fa-envelope-o fa-3x sr-contact"></i>
-                    <p><a href="mailto:your-email@your-domain.com">feedback@startbootstrap.com</a></p>
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <i class="fa fa-envelope-o fa-3x sr-contact"></i><br><br><br>
+                      <div class="col-md-8 col-md-offset-2">
+                  <form class="form-horizontal">
+                    <?php echo do_shortcode('[contact-form-7 id="50" title="Contact form 1"]' );?>
+                  </form>
+
+                  <hr>
+                    <h3>Our Social Sites</h3>
+                  <ul class="list-inline banner-social-buttons">
+                    <li><a href="#" class="btn btn-default btn-lg"><i class="fa fa-twitter"> <span class="network-name">Twitter</span></i></a></li>
+                    <li><a href="#" class="btn btn-default btn-lg"><i class="fa fa-facebook"> <span class="network-name">Facebook</span></i></a></li>
+                    <li><a href="#" class="btn btn-default btn-lg"><i class="fa fa-youtube-play"> <span class="network-name">Youtube</span></i></a></li>
+                  </ul>
+                </div>
                 </div>
             </div>
         </div>
